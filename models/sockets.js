@@ -1,4 +1,4 @@
-
+const Markers = require("./markers");
 
 class Sockets {
 
@@ -6,6 +6,7 @@ class Sockets {
 
         this.io = io;
 
+        this.markers = new Markers();
         this.socketEvents();
     }
 
@@ -20,7 +21,21 @@ class Sockets {
             // TODO: Listen when a client sends a client : personal-message
             // TODO: Disconnect --> check in the database that the user is offline
          
-          
+
+             /* From Map App*/
+             console.log("client online");
+             socket.emit('active-markers', this.markers.actives);
+             
+             socket.on('new-marker', (marker)=> {
+                console.log("marker",marker);
+                 this.markers.addMarker(marker);
+                 socket.broadcast.emit('new-marker',marker);
+             })
+           
+             socket.on('updated-marker',marker => {
+                 this.markers.updateMarker(marker);
+                 socket.broadcast.emit('updated-marker',marker);
+             });
         
         });
     }

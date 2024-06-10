@@ -43,7 +43,7 @@ class Server {
 
     // Esta configuración se puede tener aquí o como propieda de clase
     // depende mucho de lo que necesites
-    configurarSockets() {
+    configureSockets() {
         new Sockets( this.io );
     }
 
@@ -53,11 +53,11 @@ class Server {
         this.middlewares();
 
         // Inicializar sockets
-        this.configurarSockets();
+        this.configureSockets();
 
         // Inicializar Server
         this.server.listen( this.port, () => {
-            console.log('Server corriendo en puerto:', this.port );
+            console.log('Server running in port:', this.port );
         });
     }
 
