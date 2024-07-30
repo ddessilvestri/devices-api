@@ -24,19 +24,23 @@ class Sockets {
 
              /* From Map App*/
              console.log("client online");
-             socket.emit('active-markers', this.markers.actives);
+            //  socket.emit('active-markers', this.markers.actives);
              
-             socket.on('new-marker', (marker)=> {
-                console.log("marker",marker);
-                 this.markers.addMarker(marker);
-                 socket.broadcast.emit('new-marker',marker);
-             })
+            //  socket.on('new-marker', (marker)=> {
+            //     console.log("marker",marker);
+            //      this.markers.addMarker(marker);
+            //      socket.broadcast.emit('new-marker',marker);
+            //  })
            
-             socket.on('updated-marker',marker => {
-                 this.markers.updateMarker(marker);
-                 socket.broadcast.emit('updated-marker',marker);
-             });
+            //  socket.on('updated-marker',marker => {
+            //      this.markers.updateMarker(marker);
+            //      socket.broadcast.emit('updated-marker',marker);
+            //  });
         
+
+             socket.on('disconnect',()=>{
+                console.log("cliente desconectado");
+             })
         });
     }
 
