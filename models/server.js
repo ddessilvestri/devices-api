@@ -38,6 +38,7 @@ class Server {
         // Api ENDpoints
         this.app.use('/api/login',require('../router/auth'));
         this.app.use('/api/messages',require('../router/messages'));
+        this.app.use('/api/devices',require('../router/devices'));
     
     }
 
